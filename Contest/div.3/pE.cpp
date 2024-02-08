@@ -8,7 +8,7 @@
 using namespace std;
 using namespace __gnu_pbds;
 template<typename T>
-using pbds_set = tree<T, null_type, equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+using pbds_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T>
 using pbds_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 struct edge {
@@ -23,7 +23,29 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int n, k; cin >> n >> k;
+    vector<int> ans(n + 1);
+    int l = 1, r = n;
+    bool ltor = true;
+    for(int i = 1; i <= k; i++){
+        if(ltor){
+            for(int j = i; j <= n; j += k){
+                ans[j] = l;
+                l++;
+            }
+        }
+        else {
+            for(int j = i; j <= n; j += k){
+                ans[j] = r;
+                r--;
+            }
+        }
+        ltor ^= 1;
+    }
+    for(int i = 1; i <= n; i++){
+        cout << ans[i] << " ";
+    }
+    cout << endl;
 }
 signed main(){
     #ifdef LOCAL
