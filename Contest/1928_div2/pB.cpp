@@ -7,8 +7,8 @@
 #define int long long
 using namespace std;
 using namespace __gnu_pbds;
-template<typename T>
-using pbds_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+// template<typename T>
+// using pbds_set = tree<T, null_type, equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T>
 using pbds_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 struct edge {
@@ -23,7 +23,30 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int n; cin >> n;
+    vector<int> v(n);
+    for(int i = 0; i < n; i++) cin >> v[i];
+    sort(all(v));
+    v.erase(unique(all(v)), v.end());
+    // cout << v.size() << endl;
+    int l = 0, r = -1;
+    deque<int> dq;
+    int ans = 0;
+    // cout << r << " " << v.size() << endl;
+    while(r < (int)v.size() - 1){
+        if(dq.empty() || dq[0] + n - 1 >= v[r]){
+            r++;
+            dq.push_back(v[r]);
+        }
+        else {
+            dq.pop_front();
+            l++;
+        }
+        if(!dq.empty() && dq[0] + n - 1 >= dq.back()) ans = max(ans, (int)dq.size());
+        // for(auto i : dq) cout << i << " ";
+        // cout << endl;
+    }
+    cout << ans << endl;
 }
 signed main(){
     #ifdef LOCAL

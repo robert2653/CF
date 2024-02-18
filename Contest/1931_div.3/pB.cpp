@@ -23,7 +23,33 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int n; cin >> n;
+    vector<int> v(n);
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        cin >> v[i];
+        sum += v[i];
+    }
+    if(sum % n != 0){
+        cout << "No\n";
+        return;
+    }
+    int k = sum / n;
+    int nokori = 0;
+    for(int i = 0; i < n; i++){
+        if(v[i] >= k){
+            nokori += v[i] - k;
+        }
+        else if(nokori < k - v[i]){
+            cout << "No\n";
+            return;
+        }
+        else {
+            nokori -= k - v[i];
+        }
+    }
+    // cerr << nokori << "\n";
+    cout << "Yes\n";
 }
 signed main(){
     #ifdef LOCAL

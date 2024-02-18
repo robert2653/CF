@@ -23,7 +23,18 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int n; cin >> n;
+    char a, b, c;
+    if(n <= 28){
+        a = 'a'; b = 'a'; c = 'a' - 3 + n;
+    }
+    else if(n <= 53){
+        a = 'a'; b = 'a' + n - 28; c = 'z';
+    }
+    else {
+        a = 'a' + n - 53; b = 'z'; c = 'z';
+    }
+    cout << a << b << c << endl;
 }
 signed main(){
     #ifdef LOCAL

@@ -23,7 +23,22 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int k, x, a; cin >> k >> x >> a;
+    int cost = 0;
+    for(int i = 0, cnt = 0, now = 1; i <= x; i++){
+        if(cnt == k - 1){
+            cnt = 0;
+            now *= 2;
+        }
+        cnt++;
+        cost += now;
+        if(cost > a) {
+            cout << "No\n";
+            return;
+        }
+        // cout << cost << " " << now << " " << cnt << "\n";
+    }
+    cout << "Yes\n";
 }
 signed main(){
     #ifdef LOCAL

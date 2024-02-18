@@ -23,7 +23,22 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
+    int n; cin >> n;
+    string s;
+    cin >> s;
+    int ans = 0;
+    int times = 0;
+    for(int i = 0; i < n; i++) {
+        if (s[i] == '@'){
+            times = 0;
+            ans++;
+        }
 
+        else if (s[i] == '*') times++;
+        else times = 0;
+        if (times == 2) break;
+    }
+    cout << ans << endl;
 }
 signed main(){
     #ifdef LOCAL

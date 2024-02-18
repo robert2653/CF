@@ -23,7 +23,17 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int n; cin >> n;
+    vector<int> v(n);
+    for(int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    int now = v[0] + 1;
+    for (int i = 1; i < n; i++, now++) {
+        if (now % v[i] == 0) continue;
+        now += v[i] - now % v[i];
+    }
+    cout << now - 1 << "\n";
 }
 signed main(){
     #ifdef LOCAL
