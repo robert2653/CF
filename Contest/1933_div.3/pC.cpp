@@ -11,12 +11,39 @@ template<typename T>
 using pbds_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T>
 using pbds_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+struct edge {
+    int from; int to;
+    int weight;
+};
+struct node {
+    int sum;
+};
 const int llinf = 4e18;
 const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int a, b, l;
+    cin >> a >> b >> l;
+    int now = 1;
+    int ans = 0;
+    set<int> st;
+    while (now <= l) {
+        if (l % now == 0) {
+            int x = l / now;
+            st.insert(x);
+            int cnt = 1;
+            while (x % b == 0) {
+                x /= b;
+                st.insert(x);
+                cnt++;
+            }
+            // ans += cnt;
+        }
+        else break;
+        now *= a;
+    }
+    cout << st.size() << endl;
 }
 signed main(){
     #ifdef LOCAL

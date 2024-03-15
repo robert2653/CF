@@ -11,12 +11,29 @@ template<typename T>
 using pbds_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T>
 using pbds_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+struct edge {
+    int from; int to;
+    int weight;
+};
+struct node {
+    int sum;
+};
 const int llinf = 4e18;
 const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int n; cin >> n;
+    deque<int> dq(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> dq[i];
+    }
+    sort(all(dq));
+    int i = dq.front(); dq.pop_front();
+    int k = dq.front(); dq.pop_front();
+    int j = dq.back(); dq.pop_back();
+    int l = dq.back(); dq.pop_back();
+    cout << abs(i - j) + abs(j - k) + abs(k - l) + abs(l - i) << "\n";
 }
 signed main(){
     #ifdef LOCAL

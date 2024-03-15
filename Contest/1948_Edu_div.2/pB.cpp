@@ -16,7 +16,32 @@ const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 void solve(){
-
+    int n; cin >> n;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    int pre = 0;
+    for (int i = 0; i < n; i++) {
+        if (v[i] < pre) {
+            cout << "NO\n";
+            return;
+        }
+        else if (v[i] <= 9) {
+            pre = v[i];
+            continue;
+        }
+        else {
+            if (v[i] / 10 >= pre && v[i] / 10 <= v[i] % 10) {
+                pre = v[i] % 10;
+            }
+            else {
+                pre = v[i];
+            }
+        }
+    }
+    cout << "YES\n";
+    // cerr << pre << "\n";
 }
 signed main(){
     #ifdef LOCAL
