@@ -17,7 +17,34 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int r; cin >> r;
+    int ans = 0;
+    for (int i = 0; i <= r; i++) {
+        int a = 0, b = r;
+        // 找下界
+        int x = r * r;
+        while (a <= b) {
+            int m = (a + b) / 2;
+            if (m * m + i * i < x) {
+                a = m + 1;
+            }
+            else b = m - 1;
+        }
+        int ans1 = a;
+        // 找上界
+        a = 0, b = r + 1;
+        x = (r + 1) * (r + 1);
+        while (a <= b) {
+            int m = (a + b) / 2;
+            if (m * m + i * i >= x) {
+                b = m - 1;
+            }
+            else a = m + 1;
+        }
+        int ans2 = b;
+        ans += (ans2 - ans1 + 1);
+    }
+    cout << ans * 4 - 4 << "\n";
 }
 
 signed main() {

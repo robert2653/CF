@@ -15,9 +15,15 @@ const int llinf = 4e18;
 const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
-
+// n = 5;
+// 1 2 3 4 5 6 7 8
+// 
 void solve() {
-
+    int n; cin >> n;
+    cout << n << " " << n << "\n";
+    for (int i = 1; i <= n / 2; i++) cout << i << " " << 1 << "\n";
+    for (int i = n; i > n / 2 + 1; i--) cout << i << " " << (n + 1) / 2 << "\n";
+    cout << "\n";
 }
 
 signed main() {

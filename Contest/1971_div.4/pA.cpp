@@ -17,7 +17,8 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int a, b; cin >> a >> b;
+    cout << min(a, b) << " " << max(a, b) << endl;
 }
 
 signed main() {

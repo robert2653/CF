@@ -15,35 +15,23 @@ const int llinf = 4e18;
 const int inf = 2e9;
 const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
-void solve(){
-    string s; cin >> s;
-    int sz = s.size();
-    for (int i = sz / 2; i >= 1; i--) {
-        int l = 0, r = i * 2 - 1;
-        while (r < sz) {
-            bool b = true;
-            for (int k = l; k < l + i; k++) {
-                if (s[k] == s[k + i] || s[k] == '?' || s[k + i] == '?') {
-                    continue;
-                }
-                else {
-                    b = false;
-                    break;
-                }
-            }
-            if (b) {
-                cout << i * 2 << "\n";
-                return;
-            }
-            if (r + 1 == sz) {
-                break;
-            }
-            l++; r++;
-        }
+
+void solve() {
+    int n; cin >> n;
+    vector<int> ans(n), v(n);
+    int mex = n;
+    for (int i = 0; i < n; i++) cin >> v[i];
+    for (int i = n - 1; i >= 0; i--) {
+        ans[i] = mex - v[i];
+        mex = min(mex, ans[i]);
+        // cout << mex << " ";
     }
-    cout << 0 << "\n";
+    for (auto i : ans) cout << i << " ";
+    cout << "\n";
+
 }
-signed main(){
+
+signed main() {
     #ifdef LOCAL
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
@@ -52,7 +40,7 @@ signed main(){
     cin.tie(nullptr);
     int t = 1;
     cin >> t;
-    while(t--){
+    while (t--) {
         solve();
     }
 }

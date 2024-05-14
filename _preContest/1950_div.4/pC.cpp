@@ -17,11 +17,32 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    string s; cin >> s;
+    string h = {s[0], s[1]};
+    string m = {s[3], s[4]};
+    int hn = stoll(h);
+    int mn = stoll(m);
+    if (hn >= 13) {
+        hn -= 12;
+        h = to_string(hn);
+        if (h.size() == 1) h.insert(h.begin(), '0');
+        cout << h << ":" << m << " PM\n";
+    }
+    else if (hn == 12) {
+        cout << h << ":" << m << " PM\n";
+    }
+    else if (hn == 0) {
+        cout << "12:" << m << " AM\n";
+    }
+    else cout << h << ":" << m << " AM\n";
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    #ifdef LOCAL
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
     int t = 1;
     cin >> t;

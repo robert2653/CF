@@ -17,6 +17,20 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
+    string s; cin >> s;
+    int ok = 0;
+    for (int i = 0; i < (int)s.size() - 1; i++) {
+        if (s[i] != s[i + 1]) {
+            ok = 1;
+            swap(s[i], s[i + 1]);
+            break;
+        }
+    }
+    if (ok) {
+        cout << "YES\n";
+        cout << s << "\n";
+    }
+    else cout << "NO\n";
 
 }
 

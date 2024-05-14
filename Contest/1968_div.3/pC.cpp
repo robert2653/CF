@@ -17,7 +17,18 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int n; cin >> n;
+    vector<int> v(n), ans(n);
+    for (int i = 0; i < n - 1; i++) {
+        cin >> v[i];
+    }
+    ans[0] = v[0] + 1;
+    for (int i = 1; i < n - 1; i++) {
+        ans[i] = ans[i - 1] * (v[i] / ans[i - 1] + 1) + v[i - 1];
+    }
+    ans[n - 1] = ans[n - 2] + v[n - 2];
+    for (auto i : ans) cout << i << " ";
+    cout << "\n";
 }
 
 signed main() {

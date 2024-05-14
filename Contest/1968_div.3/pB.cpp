@@ -17,7 +17,19 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int sz1, sz2; cin >> sz1 >> sz2;
+    string a, b; cin >> a >> b;
+    int ans = 0;
+    int p1 = 0, p2 = 0;
+    while (p1 < sz1 && p2 < sz2) {
+        if (a[p1] == b[p2]) {
+            ans++;
+            p1++;
+            p2++;
+        }
+        else p2++;
+    }
+    cout << ans << endl;
 }
 
 signed main() {

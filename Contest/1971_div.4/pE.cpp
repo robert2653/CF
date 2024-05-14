@@ -17,7 +17,21 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int e, k, q; cin >> e >> k >> q;
+    vector<int> a(k + 1);
+    a[0] = 0;
+    vector<int> b(k + 1);
+    b[0] = 0;
+    for (int i = 1; i <= k; i++) cin >> a[i];
+    for (int i = 1; i <= k; i++) cin >> b[i];
+    while (q--) {
+        int x; cin >> x;
+        int d = --upper_bound(a.begin(), a.end(), x) - a.begin();
+        //  time / (y - x) * (q - x);
+        if (a[d + 1] == a[d]) cout << b[d] << "\n";
+        else cout << b[d] + (b[d + 1] - b[d]) * (x - a[d]) / (a[d + 1] - a[d]) << " ";
+    }
+    cout << "\n";
 }
 
 signed main() {

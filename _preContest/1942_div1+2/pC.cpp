@@ -17,11 +17,30 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int n, x, y; cin >> n >> x >> y;
+    vector<int> v(x);
+    for (int i = 0; i < x; i++) {
+        cin >> v[i];
+    }
+    sort(all(v));
+    vector<int> v2;
+    int ans = n - 2;
+    int cnt = 1;
+    vector<int> dis(x);
+    for (int i = 0; i < x; i++) {
+        dis[i] = (v[(i + 1) % x] - v[i] + n) % n;
+        if (dis[i] >= 3) ans -= dis[i] - 1;
+    }
+    cout << ans << "\n";
+    
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    #ifdef LOCAL
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
     int t = 1;
     cin >> t;

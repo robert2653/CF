@@ -17,11 +17,26 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int n; cin >> n;
+    vector<int> v(n);
+    // map<int, int> mp;
+    for (int i = 0 ; i < n; i++) {
+        cin >> v[i];
+        // mp[v[i]]++;
+    }
+    sort(all(v));
+    // cout << mp[v[n / 2]] << "\n";
+    int m = v[(n - 1) / 2];
+    int ans = 0;
+    for (int i = (n - 1) / 2; i < n; i++) if (v[i] == m) ans++;
+    cout << ans << "\n";
 }
-
 signed main() {
-    ios_base::sync_with_stdio(false);
+    #ifdef LOCAL
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
     int t = 1;
     cin >> t;

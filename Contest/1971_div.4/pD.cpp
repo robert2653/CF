@@ -17,11 +17,27 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    string s; cin >> s;
+    int n = s.size();
+    int ans = 1;
+    int now = 0;
+    int flag = 0;
+    int turn = s[0] - '0';
+    for (int i = now; i < n; i++) {
+        if (i < n - 1 && s[i] == '0' && s[i + 1] == '1' && !flag) {
+            ans--;
+            flag = 1;
+        }
+        if (s[i] - '0' != turn) {
+            ans++;
+            turn = s[i] - '0';
+        }
+    }
+    cout << ans << endl;
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    // ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     int t = 1;
     cin >> t;

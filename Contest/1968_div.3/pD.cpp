@@ -17,7 +17,33 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int n, k, pb, ps;
+    cin >> n >> k >> pb >> ps;
+    pb--; ps--;
+    vector<int> p(n), v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> p[i];
+        p[i]--;
+    }
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    vector<int> bscore, sscore;
+    int x = 0, y = 0;
+    for (int i = 0; i < n && k > 0; i++) {
+        bscore.push_back(x + k * v[pb]);
+        sscore.push_back(y + k * v[ps]);
+        k--;
+        x += v[pb];
+        y += v[ps];
+        pb = p[pb];
+        ps = p[ps];
+    }
+    int ans1 = *max_element(all(bscore));
+    int ans2 = *max_element(all(sscore));
+    if (ans1 == ans2) cout << "Draw\n";
+    else if (ans1 > ans2) cout << "Bodya\n";
+    else cout << "Sasha\n";
 }
 
 signed main() {

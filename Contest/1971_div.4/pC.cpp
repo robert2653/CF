@@ -17,7 +17,13 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int a, b, c, d; cin >> a >> b >> c >> d;
+    if (a > b) swap(a, b);
+    set<int> possible;
+    for (int i = a + 1; i < b; i++) possible.insert(i);
+    if (possible.count(c) && possible.find(d) == possible.end()) cout << "YES\n";
+    else if (possible.count(d) && possible.find(c) == possible.end()) cout << "YES\n";
+    else cout << "NO\n";
 }
 
 signed main() {

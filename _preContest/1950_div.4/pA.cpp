@@ -17,11 +17,18 @@ const int mod = 1e9 + 7;
 const int maxn = 2e5 + 5;
 
 void solve() {
-
+    int a, b, c; cin >> a >> b >> c;
+    if (a < b && b < c) cout << "STAIR\n";
+    else if (a < b && b > c) cout << "PEAK\n";
+    else cout << "NONE\n";
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    #ifdef LOCAL
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
     int t = 1;
     cin >> t;
