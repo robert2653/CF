@@ -1,4 +1,4 @@
 .vscode
 test.cpp
-.exe
-.out
+*.exe
+*.out
