@@ -19,4 +19,6 @@ for ((i = 0; i < N; i++)); do
     cp "$source" "$filename"
 done
 
+cp "$source" "test.cpp"
+
 echo "Done"
